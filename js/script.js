@@ -20,7 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
         slideSelector: '.offer__slide',
         slidePrev: '.offer__slider-prev',
         slideNext: '.offer__slider-next',
-        wrapper: '.offer__slider-wrapper',
         field: '.offer__slider-inner',
         slideToScroll: 1,
         transform: true,

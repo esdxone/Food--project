@@ -25,7 +25,6 @@ function cards() {
             if (this.classes.length >= 1) {
                 this.classes.forEach(className => block.classList.add(className));
             } else {
-
                 this.block = 'menu__item';
                 block.classList.add(this.block);
             }
