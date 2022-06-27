@@ -1,5 +1,6 @@
 import {getData} from '../service/services';
 function cards() {
+    // Класс для формирования карточек меню
     class CardElement {
 
         constructor(title, desciption, price, currency, img, parent, ...classes) {
@@ -13,19 +14,22 @@ function cards() {
             this.classes = classes;
             this.convertToUAH();
         }
-
+        // Метод конвертации валюты
         convertToUAH() {
             this.price = this.price * this.currencyValue;
         }
-
+        // Метод формирования карточки товара
         render() {
             const block = document.createElement('div');
+            //Если в конструктор класса передано больше классов, то добавляем их на карточку
             if (this.classes.length >= 1) {
                 this.classes.forEach(className => block.classList.add(className));
             } else {
+
                 this.block = 'menu__item';
                 block.classList.add(this.block);
             }
+            // Формируем вёрстку
             block.innerHTML = `
             <img src="${this.img}" alt="${this.title}">
             <h3 class="menu__item-subtitle">${this.title}</h3>
