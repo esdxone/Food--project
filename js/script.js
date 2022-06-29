@@ -25,6 +25,6 @@ window.addEventListener('DOMContentLoaded', () => {
         transform: true,
         dots: true
     });
-    timer('2022-07-20');
+    timer('.timer','2022-07-20');
 
 });

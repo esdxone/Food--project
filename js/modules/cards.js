@@ -52,6 +52,9 @@ function cards() {
                 new CardElement( title, descr, price,'грн', img,'.menu__field .container','menu__item'
                 ).render();
             });
+        })
+        .catch((data) => {
+            console.log(`Ошибка ${data}`);
         });
 }
 

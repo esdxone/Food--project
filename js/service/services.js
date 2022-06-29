@@ -9,7 +9,15 @@ const postData = async (url, data) => {
     return await res.json();
 };
 const getData = async (url) => {
-    const res = await fetch(url);
+    let res;
+    await fetch(url)
+    .then(data => data.json())
+    .catch((data) => {
+        console.log(data);
+    })
+    .finally((data) => {
+        res = data;
+    });
 
     if (!res.ok) {
         throw new Error(`Could not feth $
