@@ -43,9 +43,7 @@ function cards() {
             this.parent.append(block);
         }
     }
-
-
-
+    // Получаем данные с JSON-сервера
     getData('http://localhost:3000/menu')
         .then(data => {
             data.forEach(({img, title, descr,price}) => {
@@ -54,7 +52,7 @@ function cards() {
             });
         })
         .catch((data) => {
-            console.log(`Ошибка ${data}`);
+            console.log(data)
         });
 }
 

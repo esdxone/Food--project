@@ -1,9 +1,14 @@
-import {modalClose, modalOpen} from './modal';
-import {postData} from '../service/services';
+import {
+    modalClose,
+    modalOpen
+} from './modal';
+import {
+    postData
+} from '../service/services';
 
 function form(formSelector) {
     const form = document.querySelectorAll(formSelector);
-
+    // Указываем сообщения в зависимости от состояния формы
     const formMessage = {
         loading: 'img/spinner.svg',
         success: 'Спасибо! Мы скоро с Вами свяжемся',
@@ -14,11 +19,10 @@ function form(formSelector) {
         sendDataForm(item);
     });
 
-
     function sendDataForm(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-
+            // Устанавливаем анимацию загрузки
             const statusMessage = document.createElement('img');
             statusMessage.setAttribute('src', formMessage.loading);
             statusMessage.style.cssText = `
@@ -27,12 +31,10 @@ function form(formSelector) {
             `;
             form.insertAdjacentElement('afterend', statusMessage);
 
-
             const formData = new FormData(form);
-
             const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-
+            // Отправляем данные на сервер
             postData('http://localhost:3000/requests', json)
                 .then((data) => {
                     console.log(data);
@@ -44,7 +46,7 @@ function form(formSelector) {
                     form.reset();
                 });
         });
-
+        // Показываем сообщение об успешной отправке
         function showSuccessModal(message) {
             const modalContentDialog = document.querySelector('.modal__dialog');
 
@@ -66,7 +68,6 @@ function form(formSelector) {
             }, 3000);
         }
     }
-
 }
 
 export default form;

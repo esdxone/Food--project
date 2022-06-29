@@ -9,22 +9,19 @@ const postData = async (url, data) => {
     return await res.json();
 };
 const getData = async (url) => {
-    let res;
-    await fetch(url)
-    .then(data => data.json())
-    .catch((data) => {
-        console.log(data);
-    })
-    .finally((data) => {
-        res = data;
-    });
-
-    if (!res.ok) {
-        throw new Error(`Could not feth $
-       {url}, status: ${res.status}`);
-    }
-    return await res.json();
+    const data = await fetch(url)
+        .then(res => {
+            if (res.ok) {
+                return res;
+            } else {
+                throw new Error(`Could not feth
+                ${url}, status: ${res.status}`);
+            }
+        });
+    return await data.json();
 };
 
-export {postData};
-export {getData};
+export {
+    postData,
+    getData
+};

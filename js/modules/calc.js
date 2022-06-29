@@ -4,19 +4,8 @@ function calc() {
     let sex, height, weight, age, ratio;
 
     // Проверяем наличие записей в localstorage
-    if (localStorage.getItem('sex')) {
-        sex = localStorage.getItem('sex');
-    } else {
-        sex = 'female';
-        localStorage.setItem('sex', 'female');
-    }
-
-    if (localStorage.getItem('ratio')) {
-        ratio = localStorage.getItem('ratio');
-    } else {
-        ratio = 1.375;
-        localStorage.setItem('ratio', 1.375);
-    }
+    !localStorage.getItem('sex') ? localStorage.setItem('sex', 'female') : sex =  localStorage.getItem('sex');
+    !localStorage.getItem('ratio') ? localStorage.setItem('ratio', 1.375) : ratio =  localStorage.getItem('ratio');
 
     // Заполняем информацию для калькулятор из localstorage
     function initLocalSettings() {
@@ -103,7 +92,6 @@ function calc() {
                             }
                             e.target.classList.add('calculating__choose-item_active');// Устанавливаем класс активности
                         });
-
                     }
                     // Вызываем функцинию по окончанию события
                     calcTotal();
